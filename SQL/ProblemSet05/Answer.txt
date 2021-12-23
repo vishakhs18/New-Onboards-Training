@@ -1,0 +1,14 @@
+1. select m_name from musician where m_no in 
+        (select concert_organiser from concert where concert_venue = "Assembly Rooms"
+          and con_date > '1997-02-01');
+
+2. select a.m_name
+    from musician a join performer b on a.m_no = b.perf_is and b.instrument in ("violin", "guitar")
+                    join place c on c.place_country = "England" and c.place_no = a.born_in
+3. select b.m_name, c.place_town, a.con_date
+    from concert a join musician b on b.m_no = a.concert_orgnizer
+                   join place c on c.place_no = b.concert_in and c.place_country="USA";
+                   
+4. select a.concert_venue, a.con_date, c.c_title
+    from concert a join musician b on b.m_no = a.concert_orgnizer and b.m_name = "Andy Jones"
+                    join composition c on c.c_no = b.m_no;
